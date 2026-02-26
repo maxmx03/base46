@@ -560,10 +560,11 @@ function M.load_faces(base46, config)
       hl(0, name, val)
     end
   end
-  if vim.g.base46 then
-    vim.defer_fn(function()
-      vim.api.nvim_del_var 'base46'
-    end, 800)
+
+  if not vim.tbl_isempty(config.groups or {}) then
+    for _, group in pairs(config.groups) do
+      hl(0, group.name, group.val)
+    end
   end
 end
 
