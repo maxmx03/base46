@@ -12,7 +12,7 @@ local M = {}
 M.config = {
 	colorscheme = '',
 	transparency = false,
-	themes = {}
+	themes = {},
 }
 
 ---@param opts base46.config
