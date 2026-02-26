@@ -1,14 +1,53 @@
 # Base46
 
-- [contrast-checker](https://webaim.org/resources/contrastchecker/)
-- [coolors](https://coolors.co)
-- [colorhex](https://www.colorhexa.com)
-- [256-colors-cheet](https://www.ditig.com/publications/256-colors-cheat-sheet)
+A powerful Neovim color scheme builder and manager inspired by base16, designed to create beautiful and accessible color schemes.
+
+## Features
+
+- **Base16 Compatible** - Built on the base16 color specification
+- **High Contrast Support** - Integrated contrast checker tools for accessibility
+- **Transparent Backgrounds** - Optional transparency support
+- **Two Color Palettes** - `base_30` for UI elements and `base_16` for syntax highlighting
+
+## Resources
+
+- [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) - Check color contrast ratios for accessibility
+- [Coolors](https://coolors.co) - Create and explore color palettes
+- [ColorHex](https://www.colorhexa.com) - Color encyclopedia and converter
+- [256 Colors Cheat Sheet](https://www.ditig.com/publications/256-colors-cheat-sheet) - Terminal color reference
+
+## Installation
+
+### Using a plugin manager
 
 ```lua
----@class base46.colors
+-- Using lazy.nvim
+{
+  "yourusername/base46",
+  config = function()
+    require("base46").setup({
+      colorscheme = "theme_name",
+      transparency = false
+    })
+  end
+}
+```
+
+### Manual Setup
+
+```bash
+mkdir -p ~/.config/nvim/colors
+nvim ~/.config/nvim/colors/theme_name.lua
+```
+
+## Creating a Theme
+
+Create a new theme file in `~/.config/nvim/colors/`:
+
+```lua
+---@class base46
 local theme_name = {
-  name = 'theme_name'
+  name = 'theme_name',
   none = 'NONE',
   yellow = '',
   cyan = '',
@@ -72,10 +111,122 @@ local theme_name = {
   groups = {}
 }
 
-return theme_name
+local base46 = require 'base46'
+base46.load_theme(theme_name)
+```
+
+## Configuration
+
+```lua
+-- inside init.lua
+require('base46').setup({
+    colorscheme = 'theme_name',
+    transparency = false
+})
+```
+
+### Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `colorscheme` | string | `"default"` | Theme name to load |
+| `transparency` | boolean | `false` | Enable transparent backgrounds |
+| `themes` | table | `{}` | List of theme names for telescope picker |
+
+## Color Reference
+
+### base_30 (UI Colors)
+
+Designed for Neovim UI elements with a 30-color palette optimized for modern interfaces.
+
+### base_16 (Syntax Colors)
+
+Follows the original base16 specification for syntax highlighting with 16 colors.
+
+## API Reference
+
+### `require('base46').setup(opts)`
+
+Initialize the plugin and apply the theme.
+
+```lua
+require('base46').setup({
+    colorscheme = 'theme_name',
+    transparency = false,
+    themes = {'theme1', 'theme2'}  -- for telescope picker
+})
+```
+
+### `require('base46').load_theme(palette)`
+
+Load a theme directly.
+
+```lua
+local base46 = require 'base46'
+local my_theme = require('colors.my_theme')
+base46.load_theme(my_theme)
+```
+
+### `require('base46').config`
+
+Access the current configuration.
+
+```lua
+local config = require('base46').config
+print(config.colorscheme)
+```
+
+## Color Utilities
+
+The plugin includes color manipulation utilities at `require('base46.color')`:
+
+```lua
+local color = require('base46.color')
+
+-- Convert hex to RGB
+local r, g, b = color.hex_to_rgb('#ff0000')
+
+-- Convert RGB to hex
+local hex = color.rgb_to_hex(255, 0, 0)
+
+-- Darken a color by percentage
+local darker = color.darken('#ff0000', 20)
+
+-- Lighten a color by percentage
+local lighter = color.lighten('#ff0000', 20)
+
+-- Shade a color (0-10 range)
+local shaded = color.shade('#ff0000', 2)
+
+-- Tint a color (0-10 range)
+local tinted = color.tint('#ff0000', 2)
+
+-- Blend two colors (alpha 0-1)
+local blended = color.blend('#ff0000', '#0000ff', 0.5)
+```
+
+## Telescope Picker
+
+A telescope extension is included to quickly switch between themes:
+
+```lua
+-- After adding telescope and base46 to your plugins
+require('telescope').load_extension('themes')
+
+-- Open the theme picker
+:Telescope themes
+```
+
+Make sure to populate the `themes` list in your setup:
+
+```lua
+require('base46').setup({
+    colorscheme = 'default',
+    themes = {'default', 'dracula', 'nord', 'one_light'}
+})
 ```
 
 ## Credits
 
-- [nvchad](https://github.com/NvChad/base46)
-- [base16](https://github.com/chriskempson/base16)
+- [NvChad](https://github.com/NvChad/base46) - The original Base46 implementation
+- [Base16](https://github.com/chriskempson/base16) - The base16 color scheme specification

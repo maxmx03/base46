@@ -1,0 +1,321 @@
+*base46.txt*                A Neovim color scheme builder and manager
+
+Author: Your Name <your@email.com>
+License: MIT
+
+==============================================================================
+1. CONTENTS                                    *base46* *base46-contents*
+
+  1. Contents.........................|base46-contents|
+  2. Introduction.....................|base46-intro|
+  3. Installation.....................|base46-install|
+  4. Creating a Theme.................|base46-create|
+  5. Configuration....................|base46-config|
+  6. Colors Reference.................|base46-colors|
+  7. API Reference....................|base46-api|
+  8. Color Utilities..................|base46-utilities|
+  9. Telescope Picker.................|base46-telescope|
+
+==============================================================================
+2. INTRODUCTION                                    *base46-intro*
+
+Base46 is a Neovim color scheme builder and manager inspired by base16. It
+provides a flexible system for creating and managing color schemes with
+support for two color palettes: base_30 for UI elements and base_16 for
+syntax highlighting.
+
+Features:
+  - Base16 compatible color schemes
+  - 30-color UI palette (base_30)
+  - 16-color syntax palette (base_16)
+  - Transparent background support
+  - High contrast color support
+
+==============================================================================
+3. INSTALLATION                                    *base46-install*
+
+Using packer.nvim:
+>
+  use "yourusername/base46"
+<
+
+Using lazy.nvim:
+>
+  { "yourusername/base46" }
+<
+
+After installation, add to your |init.lua|:
+>
+  require("base46").setup({
+    colorscheme = "theme_name",
+    transparency = false
+  })
+<
+
+==============================================================================
+4. CREATING A THEME                                *base46-create*
+
+Create a new theme file in your config directory:
+>
+  ~/.config/nvim/colors/my_theme.lua
+<
+
+Example theme structure:
+>
+  local my_theme = {
+    name = 'my_theme',
+    none = 'NONE',
+    yellow = '#hexcode',
+    cyan = '#hexcode',
+    blue = '#hexcode',
+    darkblue = '#hexcode',
+    green = '#hexcode',
+    orange = '#hexcode',
+    violet = '#hexcode',
+    magenta = '#hexcode',
+    red = '#hexcode',
+    base_30 = {
+      base00 = '', -- Default background
+      base01 = '', -- Float background
+      base02 = '', -- Statusline background
+      base03 = '', -- WinSeparator, Border
+      base04 = '', -- Statusline foreground
+      base05 = '', -- Default Foreground, Caret, Delimiters
+      base06 = '', -- Diff Added
+      base07 = '', -- Diff Modified
+      base08 = '', -- Diff Deleted
+      base09 = '', -- Diagnostic Info, Hint
+      base0A = '', -- Diagnostic Warning
+      base0B = '', -- Diagnostics Error
+      base0C = '', -- Markup Bold
+      base0D = '', -- Markup Italic
+      base0E = '', -- Markup url
+      base0F = '', -- Markup Inline Code
+      base0G = '', -- Markup Heading 1
+      base0H = '', -- Markup Heading 2
+      base0I = '', -- Markup Heading 3
+      base0J = '', -- Markup Heading 4
+      base0K = '', -- Markup Heading 5
+      base0L = '', -- Markup Heading 6
+      base0M = '', -- Markup Tag
+      base0N = '', -- Markup Tag Attribute
+      base0O = '', -- Markup Tag Delimiter
+      base0P = '', -- Pmenu Background
+      base0Q = '', -- Folder Background
+      base0R = '', -- Cursor Color
+      base0S = '', -- Accent (primary color)
+      base0T = '', -- Title
+    },
+    base_16 = {
+      base00 = '', -- LineNr
+      base01 = '', -- Lighter Background (folding marks)
+      base02 = '', -- Selection, Visual Background
+      base03 = '', -- Comments, Invisibles, Line Highlighting
+      base04 = '', -- Variable Parameter
+      base05 = '', -- Caret, Delimiters, Operators
+      base06 = '', -- Property, Variable Member
+      base07 = '', -- PreProc, Include, Define, Macro, PreCondit
+      base08 = '', -- Variables, XML Tags, Markup Link Text
+      base09 = '', -- Integers, Boolean, Constants
+      base0A = '', -- Classes, Markup Bold, Search Text Background
+      base0B = '', -- Strings, Inherited Class, Markup Code
+      base0C = '', -- Support, Regular Expressions, Escape Characters
+      base0D = '', -- Functions, Methods, Attribute IDs, Headings
+      base0E = '', -- Keywords, Storage, Selector, Markup Italic
+      base0F = '', -- Deprecated, Embedded Language Tags
+    },
+    groups = {}
+  }
+<
+
+To load the theme:
+>
+  local base46 = require 'base46'
+  base46.load_theme(my_theme)
+<
+
+==============================================================================
+5. CONFIGURATION                                   *base46-config*
+
+Setup options (add to your |init.lua|):
+>
+  require("base46").setup({
+    -- Theme name (file name in colors/ directory)
+    colorscheme = "default",
+
+    -- Enable transparent background
+    transparency = false
+  })
+<
+
+Configuration options:
+
+  colorscheme    (string)   Theme name to load. Default: "default"
+  transparency   (boolean)  Enable transparent backgrounds. Default: false
+  themes         (table)    List of theme names for telescope picker. Default: {}
+
+==============================================================================
+6. COLORS REFERENCE                                *base46-colors*
+
+base_30 - UI Colors ~
+  Used for Neovim UI elements.
+
+  base00  Default background
+  base01  Float background
+  base02  Statusline background
+  base03  WinSeparator, Border
+  base04  Statusline foreground
+  base05  Default Foreground, Caret, Delimiters, Operators
+  base06  Diff Added
+  base07  Diff Modified
+  base08  Diff Deleted
+  base09  Diagnostic Info, Hint
+  base0A  Diagnostic Warning
+  base0B  Diagnostics Error
+  base0C  Markup Bold
+  base0D  Markup Italic
+  base0E  Markup url
+  base0F  Markup Inline Code
+  base0G  Markup Heading 1
+  base0H  Markup Heading 2
+  base0I  Markup Heading 3
+  base0J  Markup Heading 4
+  base0K  Markup Heading 5
+  base0L  Markup Heading 6
+  base0M  Markup Tag
+  base0N  Markup Tag Attribute
+  base0O  Markup Tag Delimiter
+  base0P  Pmenu Background
+  base0Q  Folder Background
+  base0R  Cursor Color
+  base0S  Accent (primary color)
+  base0T  Title
+
+base_16 - Syntax Colors ~
+  Used for syntax highlighting (base16 specification).
+
+  base00  LineNr
+  base01  Lighter Background (folding marks)
+  base02  Selection, Visual Background
+  base03  Comments, Invisibles, Line Highlighting
+  base04  Variable Parameter
+  base05  Caret, Delimiters, Operators
+  base06  Property, Variable Member
+  base07  PreProc, Include, Define, Macro, PreCondit
+  base08  Variables, XML Tags, Markup Link Text
+  base09  Integers, Boolean, Constants
+  base0A  Classes, Markup Bold, Search Text Background
+  base0B  Strings, Inherited Class, Markup Code
+  base0C  Support, Regular Expressions, Escape Characters
+  base0D  Functions, Methods, Attribute IDs, Headings
+  base0E  Keywords, Storage, Selector, Markup Italic
+  base0F  Deprecated, Embedded Language Tags
+
+==============================================================================
+7. API REFERENCE                                     *base46-api*
+
+require('base46').setup(opts)                           *base46-setup*
+  Initialize the plugin and apply the theme.
+
+  Parameters: ~
+    {opts}  table with configuration options (see |base46-config|)
+
+  Example: >
+    require('base46').setup({
+      colorscheme = 'my_theme',
+      transparency = false,
+      themes = {'theme1', 'theme2'}
+    })
+<
+
+require('base46').load_theme(palette)                   *base46-load_theme*
+  Load a theme directly.
+
+  Parameters: ~
+    {palette}  table with theme definition
+
+  Example: >
+    local base46 = require 'base46'
+    local my_theme = require('colors.my_theme')
+    base46.load_theme(my_theme)
+<
+
+require('base46').config                                *base46-config-global*
+  Access the current configuration.
+
+  Example: >
+    local config = require('base46').config
+    print(config.colorscheme)
+<
+
+==============================================================================
+8. COLOR UTILITIES                                   *base46-utilities*
+
+The plugin includes color manipulation utilities.
+
+require('base46.color')                                  *base46-color*
+
+hex_to_rgb(hex)                                          *base46.hex_to_rgb*
+  Convert hex color to RGB values.
+
+  Parameters: ~
+    {hex}  string with hex color (e.g., '#ff0000')
+
+  Returns: ~
+    {red, green, blue}  RGB values (0-255)
+
+rgb_to_hex(red, green, blue)                            *base46.rgb_to_hex*
+  Convert RGB values to hex color.
+
+  Parameters: ~
+    {red}    number (0-255)
+    {green}  number (0-255)
+    {blue}   number (0-255)
+
+  Returns: ~
+    {string}  hex color string
+
+darken(hex, percentage)                                 *base46.darken*
+  Darken a color by a percentage.
+
+lighten(hex, percentage)                               *base46.lighten*
+  Lighten a color by a percentage.
+
+shade(hex, i)                                           *base46.shade*
+  Shade a color (0-10 range).
+
+tint(hex, i)                                            *base46.tint*
+  Tint a color (0-10 range).
+
+blend(fg, bg, alpha)                                    *base46.blend*
+  Blend two colors together.
+
+  Parameters: ~
+    {fg}     string  foreground color
+    {bg}     string  background color
+    {alpha}  number  blend factor (0-1)
+
+==============================================================================
+9. TELESCOPE PICKER                                  *base46-telescope*
+
+A telescope extension is included to quickly switch between themes.
+
+Setup: >
+  require('telescope').load_extension('themes')
+<
+
+Usage: >
+  :Telescope themes
+<
+
+Make sure to populate the |base46-config| with the `themes` list:
+
+>
+  require('base46').setup({
+    colorscheme = 'default',
+    themes = {'default', 'dracula', 'nord', 'one_light'}
+  })
+<
+
+==============================================================================
+ vim:tw=78:ts=8:ft=help:norl:
