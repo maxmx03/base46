@@ -13,8 +13,10 @@ License: MIT
   5. Configuration....................|base46-config|
   6. Colors Reference.................|base46-colors|
   7. API Reference....................|base46-api|
-  8. Color Utilities..................|base46-utilities|
-  9. Telescope Picker.................|base46-telescope|
+  8. Custom Highlights................|base46-custom-highlights|
+  9. Color Utilities..................|base46-utilities|
+ 10. Telescope Picker.................|base46-telescope|
+ 11. Treesitter Queries...............|base46-treesitter|
 
 ==============================================================================
 2. INTRODUCTION                                    *base46-intro*
@@ -30,6 +32,7 @@ Features:
   - 16-color syntax palette (base_16)
   - Transparent background support
   - High contrast color support
+  - Treesitter queries for enhanced syntax highlighting
 
 ==============================================================================
 3. INSTALLATION                                    *base46-install*
@@ -153,6 +156,7 @@ Configuration options:
   colorscheme    (string)   Theme name to load. Default: "default"
   transparency   (boolean)  Enable transparent backgrounds. Default: false
   themes         (table)    List of theme names for telescope picker. Default: {}
+  groups         (table)    User highlight groups customization. Default: {}
 
 ==============================================================================
 6. COLORS REFERENCE                                *base46-colors*
@@ -224,7 +228,9 @@ require('base46').setup(opts)                           *base46-setup*
     require('base46').setup({
       colorscheme = 'my_theme',
       transparency = false,
-      themes = {'theme1', 'theme2'}
+      groups = {
+        { name = 'MyCustomGroup', val = { fg = '#ff0000' } }
+      }
     })
 <
 
@@ -249,7 +255,32 @@ require('base46').config                                *base46-config-global*
 <
 
 ==============================================================================
-8. COLOR UTILITIES                                   *base46-utilities*
+8. CUSTOM HIGHLIGHTS                                  *base46-custom-highlights*
+
+You can customize highlight groups in two ways:
+
+Via Theme File: >
+  local my_theme = {
+    name = 'my_theme',
+    -- ... colors ...
+    groups = {
+      MyCustomGroup = { fg = '#ff0000', bold = true },
+      AnotherGroup = { link = 'Function' }
+    }
+  }
+<
+
+Via Config: >
+  require('base46').setup({
+    colorscheme = 'my_theme',
+    groups = {
+      { name = 'MyCustomGroup', val = { fg = '#ff0000' } }
+    }
+  })
+<
+
+==============================================================================
+9. COLOR UTILITIES                                   *base46-utilities*
 
 The plugin includes color manipulation utilities.
 
@@ -296,7 +327,7 @@ blend(fg, bg, alpha)                                    *base46.blend*
     {alpha}  number  blend factor (0-1)
 
 ==============================================================================
-9. TELESCOPE PICKER                                  *base46-telescope*
+10. TELESCOPE PICKER                                  *base46-telescope*
 
 A telescope extension is included to quickly switch between themes.
 
@@ -316,6 +347,20 @@ Make sure to populate the |base46-config| with the `themes` list:
     themes = {'default', 'dracula', 'nord', 'one_light'}
   })
 <
+
+==============================================================================
+11. TREESITTER QUERIES                               *base46-treesitter*
+
+Base46 includes treesitter queries for enhanced syntax highlighting in
+"after/queries/":
+
+  c/           C syntax highlighting
+  css/         CSS syntax highlighting
+  lua/         Lua syntax highlighting
+  markdown/    Markdown (includes folds)
+  typescript/  TypeScript syntax highlighting
+
+These queries are loaded automatically when the colorscheme is applied.
 
 ==============================================================================
  vim:tw=78:ts=8:ft=help:norl:

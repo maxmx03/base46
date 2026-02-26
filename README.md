@@ -8,6 +8,7 @@ A powerful Neovim color scheme builder and manager inspired by base16, designed 
 - **High Contrast Support** - Integrated contrast checker tools for accessibility
 - **Transparent Backgrounds** - Optional transparency support
 - **Two Color Palettes** - `base_30` for UI elements and `base_16` for syntax highlighting
+- **Treesitter Queries** - Enhanced syntax highlighting with treesitter
 
 ## Resources
 
@@ -23,7 +24,7 @@ A powerful Neovim color scheme builder and manager inspired by base16, designed 
 ```lua
 -- Using lazy.nvim
 {
-  "yourusername/base46",
+  "maxmx03/base46",
   config = function()
     require("base46").setup({
       colorscheme = "theme_name",
@@ -127,11 +128,12 @@ require('base46').setup({
 
 ### Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `colorscheme` | string | `"default"` | Theme name to load |
-| `transparency` | boolean | `false` | Enable transparent backgrounds |
-| `themes` | table | `{}` | List of theme names for telescope picker |
+| Option         | Type    | Default     | Description                              |
+| -------------- | ------- | ----------- | ---------------------------------------- |
+| `colorscheme`  | string  | `"default"` | Theme name to load                       |
+| `transparency` | boolean | `false`     | Enable transparent backgrounds           |
+| `themes`       | table   | `{}`        | List of theme names for telescope picker |
+| `groups`       | table   | `{}`        | User highlight groups customization      |
 
 ## Color Reference
 
@@ -153,6 +155,7 @@ Initialize the plugin and apply the theme.
 require('base46').setup({
     colorscheme = 'theme_name',
     transparency = false,
+    groups = { { name = '', val = { fg = '', bg = '' } } },
     themes = {'theme1', 'theme2'}  -- for telescope picker
 })
 ```
@@ -205,6 +208,34 @@ local tinted = color.tint('#ff0000', 2)
 local blended = color.blend('#ff0000', '#0000ff', 0.5)
 ```
 
+## Custom Highlights
+
+You can customize highlight groups in two ways:
+
+### Via Theme File
+
+```lua
+local my_theme = {
+  name = 'my_theme',
+  -- ... colors ...
+  groups = {
+    MyCustomGroup = { fg = '#ff0000', bold = true },
+    AnotherGroup = { link = 'Function' }
+  }
+}
+```
+
+### Via Config
+
+```lua
+require('base46').setup({
+  colorscheme = 'my_theme',
+  groups = {
+    { name = 'MyCustomGroup', val = { fg = '#ff0000' } }
+  }
+})
+```
+
 ## Telescope Picker
 
 A telescope extension is included to quickly switch between themes:
@@ -225,6 +256,18 @@ require('base46').setup({
     themes = {'default', 'dracula', 'nord', 'one_light'}
 })
 ```
+
+## Treesitter Queries
+
+Base46 includes treesitter queries for enhanced syntax highlighting in `after/queries/`:
+
+- `c/` - C syntax highlighting
+- `css/` - CSS syntax highlighting
+- `lua/` - Lua syntax highlighting
+- `markdown/` - Markdown (includes folds)
+- `typescript/` - TypeScript syntax highlighting
+
+These queries are loaded automatically when the colorscheme is applied.
 
 ## Credits
 
