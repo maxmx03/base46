@@ -563,7 +563,10 @@ function M.load_faces(base46, config)
 
   if not vim.tbl_isempty(config.groups or {}) then
     for _, group in pairs(config.groups) do
-      hl(0, group.name, group.val)
+      local default = vim.api.nvim_get_hl(0, { link = false, name = group.name })
+      local val = vim.tbl_deep_extend('force', default, group.val)
+      ---@diagnostic disable-next-line: param-type-mismatch
+      hl(0, group.name, val)
     end
   end
 end
