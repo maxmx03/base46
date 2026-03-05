@@ -11,12 +11,13 @@ License: MIT
   3. Installation.....................|base46-install|
   4. Creating a Theme.................|base46-create|
   5. Configuration....................|base46-config|
+  5.1 Plugin Integrations.............|base46-plugins|
   6. Colors Reference.................|base46-colors|
   7. API Reference....................|base46-api|
   8. Custom Highlights................|base46-custom-highlights|
   9. Color Utilities..................|base46-utilities|
- 10. Telescope Picker.................|base46-telescope|
- 11. Treesitter Queries...............|base46-treesitter|
+  10. Telescope Picker.................|base46-telescope|
+  11. Treesitter Queries...............|base46-treesitter|
 
 ==============================================================================
 2. INTRODUCTION                                    *base46-intro*
@@ -154,9 +155,46 @@ Setup options (add to your |init.lua|):
 Configuration options:
 
   colorscheme    (string)   Theme name to load. Default: "default"
-  transparency   (boolean)  Enable transparent backgrounds. Default: false
-  themes         (table)    List of theme names for telescope picker. Default: {}
-  groups         (table)    User highlight groups customization. Default: {}
+  transparency  (boolean)  Enable transparent backgrounds. Default: false
+  themes        (table)    List of theme names for telescope picker. Default: {}
+  groups        (table)    User highlight groups customization. Default: {}
+  plugins       (table)    Plugin integrations toggle. Default: see below
+
+Plugin Integrations:                                        *base46-plugins*
+  The following plugins are integrated by default. Set to `false` to
+  disable specific plugin highlights:
+
+  bufferline     bufferline.nvim
+  nvimtree       nvim-tree.lua
+  neotree        neo-tree.nvim
+  lspconfig      nvim-lspconfig
+  telescope      telescope.nvim
+  dashboard      dashboard-nvim
+  gitsigns       gitsigns.nvim
+  dired          dired.nvim
+  cmp            nvim-cmp
+  navic          nvim-navic
+  markview       markview.nvim
+  modeline       vim-modeline (nvim-modeline)
+  hydra          hydra.nvim
+  rainbow        rainbow-delimiters
+  mason          mason.nvim
+  flutterTools   flutter-tools.nvim
+  supermaven     supermaven-nvim
+
+  Example: >
+    require("base46").setup({
+      colorscheme = "default",
+      transparency = false,
+      plugins = {
+        bufferline = true,
+        nvimtree = true,
+        lspconfig = true,
+        -- set to false to disable
+        supermaven = false,
+      }
+    })
+  <
 
 ==============================================================================
 6. COLORS REFERENCE                                *base46-colors*

@@ -134,6 +134,33 @@ require('base46').setup({
 | `transparency` | boolean | `false`     | Enable transparent backgrounds           |
 | `themes`       | table   | `{}`        | List of theme names for telescope picker |
 | `groups`       | table   | `{}`        | User highlight groups customization      |
+| `plugins`      | table   | see below   | Plugin integrations toggle              |
+
+#### Default Plugins
+
+The following plugins are integrated by default. Set to `false` to disable specific plugin highlights:
+
+```lua
+plugins = {
+  bufferline = true,    -- bufferline.nvim
+  nvimtree = true,      -- nvim-tree.lua
+  neotree = true,       -- neo-tree.nvim
+  lspconfig = true,     -- nvim-lspconfig
+  telescope = true,     -- telescope.nvim
+  dashboard = true,     -- dashboard-nvim
+  gitsigns = true,      -- gitsigns.nvim
+  dired = true,         -- dired.nvim
+  cmp = true,           -- nvim-cmp
+  navic = true,         -- nvim-navic
+  markview = true,      -- markview.nvim
+  modeline = true,      -- vim-modeline (nvim-modeline)
+  hydra = true,         -- hydra.nvim
+  rainbow = true,       -- rainbow-delimiters
+  mason = true,         -- mason.nvim
+  flutterTools = true,  -- flutter-tools.nvim
+  supermaven = true,   -- supermaven-nvim
+}
+```
 
 ## Color Reference
 
