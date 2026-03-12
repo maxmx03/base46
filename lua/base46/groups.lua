@@ -464,30 +464,30 @@ function M.load_faces(base46, config)
   end
 
   if config.plugins.cmp then
-    hl(0, 'CmpItemKindText', { fg = base46.base_16.base0B, reverse = true })
-    hl(0, 'CmpItemKindTextDefault', { fg = base46.base_16.base0B, reverse = true })
-    hl(0, 'CmpItemKindMethod', { fg = base46.base_16.base0D, reverse = true })
-    hl(0, 'CmpItemKindFunction', { fg = base46.base_16.base0D, reverse = true })
-    hl(0, 'CmpItemKindField', { fg = base46.base_16.base06, reverse = true })
-    hl(0, 'CmpItemKindVariable', { fg = base46.base_16.base08, reverse = true })
-    hl(0, 'CmpItemKindClass', { fg = base46.base_16.base0A, reverse = true })
-    hl(0, 'CmpItemKindInterface', { fg = base46.base_16.base0A, reverse = true })
-    hl(0, 'CmpItemKindModule', { fg = base46.base_16.base0A, reverse = true })
-    hl(0, 'CmpItemKindProperty', { fg = base46.base_16.base06, reverse = true })
-    hl(0, 'CmpItemKindUnit', { fg = base46.base_16.base09, reverse = true })
-    hl(0, 'CmpItemKindEnum', { fg = base46.base_16.base0A, reverse = true })
-    hl(0, 'CmpItemKindKeyword', { fg = base46.base_16.base0E, reverse = true })
-    hl(0, 'CmpItemKindSnippet', { fg = base46.base_30.base0M, reverse = true })
-    hl(0, 'CmpItemKindColor', { fg = base46.base_16.base0F, reverse = true })
-    hl(0, 'CmpItemKindFile', { fg = base46.base_16.base05, reverse = true })
-    hl(0, 'CmpItemKindReference', { fg = base46.base_30.base0E, reverse = true })
-    hl(0, 'CmpItemKindFolder', { fg = base46.base_30.base0Q, reverse = true })
-    hl(0, 'CmpItemKindEnumMember', { fg = base46.base_16.base09, reverse = true })
-    hl(0, 'CmpItemKindConstant', { fg = base46.base_16.base09, reverse = true })
-    hl(0, 'CmpItemKindStruct', { fg = base46.base_16.base0E, reverse = true })
-    hl(0, 'CmpItemKindEvent', { fg = base46.base_16.base0F, reverse = true })
-    hl(0, 'CmpItemKindOperator', { fg = base46.base_16.base0E, reverse = true })
-    hl(0, 'CmpItemKindTypeParameter', { fg = base46.base_16.base0A, reverse = true })
+    hl(0, 'CmpItemKindText', { fg = base46.base_16.base0B })
+    hl(0, 'CmpItemKindTextDefault', { fg = base46.base_16.base0B })
+    hl(0, 'CmpItemKindMethod', { fg = base46.base_16.base0D })
+    hl(0, 'CmpItemKindFunction', { fg = base46.base_16.base0D })
+    hl(0, 'CmpItemKindField', { fg = base46.base_16.base06 })
+    hl(0, 'CmpItemKindVariable', { fg = base46.base_16.base08 })
+    hl(0, 'CmpItemKindClass', { fg = base46.base_16.base0A })
+    hl(0, 'CmpItemKindInterface', { fg = base46.base_16.base0A })
+    hl(0, 'CmpItemKindModule', { fg = base46.base_16.base0A })
+    hl(0, 'CmpItemKindProperty', { fg = base46.base_16.base06 })
+    hl(0, 'CmpItemKindUnit', { fg = base46.base_16.base09 })
+    hl(0, 'CmpItemKindEnum', { fg = base46.base_16.base0A })
+    hl(0, 'CmpItemKindKeyword', { fg = base46.base_16.base0E })
+    hl(0, 'CmpItemKindSnippet', { fg = base46.base_30.base0M })
+    hl(0, 'CmpItemKindColor', { fg = base46.base_16.base0F })
+    hl(0, 'CmpItemKindFile', { fg = base46.base_16.base05 })
+    hl(0, 'CmpItemKindReference', { fg = base46.base_30.base0E })
+    hl(0, 'CmpItemKindFolder', { fg = base46.base_30.base0Q })
+    hl(0, 'CmpItemKindEnumMember', { fg = base46.base_16.base09 })
+    hl(0, 'CmpItemKindConstant', { fg = base46.base_16.base09 })
+    hl(0, 'CmpItemKindStruct', { fg = base46.base_16.base0E })
+    hl(0, 'CmpItemKindEvent', { fg = base46.base_16.base0F })
+    hl(0, 'CmpItemKindOperator', { fg = base46.base_16.base0E })
+    hl(0, 'CmpItemKindTypeParameter', { fg = base46.base_16.base0A })
     if config.plugins.supermaven then
       hl(0, 'CmpItemKindSupermaven', { link = 'CmpItemKindEvent' })
     end
@@ -536,6 +536,67 @@ function M.load_faces(base46, config)
     hl(0, 'MarkviewBlockQuoteNote', { fg = base46.base_30.base09 })
     hl(0, 'MarkviewBlockQuoteWarn', { fg = base46.base_30.base0A })
     hl(0, 'MarkviewBlockQuoteError', { fg = base46.base_30.base0B })
+    hl(
+      0,
+      'MarkviewPalette1',
+      { fg = base46.base_30.base0G, bg = blend(base46.base_30.base0G, base46.base_30.base00, 0.15) }
+    )
+    hl(
+      0,
+      'MarkviewPalette2',
+      { fg = base46.base_30.base0H, bg = blend(base46.base_30.base0H, base46.base_30.base00, 0.15) }
+    )
+    hl(
+      0,
+      'MarkviewPalette3',
+      { fg = base46.base_30.base0I, bg = blend(base46.base_30.base0I, base46.base_30.base00, 0.15) }
+    )
+    hl(
+      0,
+      'MarkviewPalette4',
+      { fg = base46.base_30.base0J, bg = blend(base46.base_30.base0J, base46.base_30.base00, 0.15) }
+    )
+    hl(
+      0,
+      'MarkviewPalette5',
+      { fg = base46.base_30.base0K, bg = blend(base46.base_30.base0K, base46.base_30.base00, 0.15) }
+    )
+    hl(
+      0,
+      'MarkviewPalette6',
+      { fg = base46.base_30.base0L, bg = blend(base46.base_30.base0L, base46.base_30.base00, 0.15) }
+    )
+    hl(
+      0,
+      'MarkviewPalette7',
+      { fg = base46.base_30.base0M, bg = blend(base46.base_30.base0M, base46.base_30.base00, 0.15) }
+    )
+    hl(0, 'MarkviewPalette1Fg', { fg = base46.base_30.base0G })
+    hl(0, 'MarkviewPalette2Fg', { fg = base46.base_30.base0H })
+    hl(0, 'MarkviewPalette3Fg', { fg = base46.base_30.base0I })
+    hl(0, 'MarkviewPalette4Fg', { fg = base46.base_30.base0J })
+    hl(0, 'MarkviewPalette5Fg', { fg = base46.base_30.base0K })
+    hl(0, 'MarkviewPalette6Fg', { fg = base46.base_30.base0L })
+    hl(0, 'MarkviewPalette7Fg', { fg = base46.base_30.base0M })
+    hl(0, 'MarkviewPalette1Bg', { bg = blend(base46.base_30.base0G, base46.base_30.base00, 0.15) })
+    hl(0, 'MarkviewPalette2Bg', { bg = blend(base46.base_30.base0H, base46.base_30.base00, 0.15) })
+    hl(0, 'MarkviewPalette3Bg', { bg = blend(base46.base_30.base0I, base46.base_30.base00, 0.15) })
+    hl(0, 'MarkviewPalette4Bg', { bg = blend(base46.base_30.base0J, base46.base_30.base00, 0.15) })
+    hl(0, 'MarkviewPalette5Bg', { bg = blend(base46.base_30.base0K, base46.base_30.base00, 0.15) })
+    hl(0, 'MarkviewPalette6Bg', { bg = blend(base46.base_30.base0L, base46.base_30.base00, 0.15) })
+    hl(0, 'MarkviewPalette7Bg', { bg = blend(base46.base_30.base0M, base46.base_30.base00, 0.15) })
+    hl(0, 'MarkviewPalette1Sign', { fg = base46.base_30.base0G })
+    hl(0, 'MarkviewPalette2Sign', { fg = base46.base_30.base0H })
+    hl(0, 'MarkviewPalette3Sign', { fg = base46.base_30.base0I })
+    hl(0, 'MarkviewPalette4Sign', { fg = base46.base_30.base0J })
+    hl(0, 'MarkviewPalette5Sign', { fg = base46.base_30.base0K })
+    hl(0, 'MarkviewPalette6Sign', { fg = base46.base_30.base0L })
+    hl(0, 'MarkviewIcon1', { fg = base46.base_30.base0G })
+    hl(0, 'MarkviewIcon2', { fg = base46.base_30.base0H })
+    hl(0, 'MarkviewIcon3', { fg = base46.base_30.base0I })
+    hl(0, 'MarkviewIcon4', { fg = base46.base_30.base0J })
+    hl(0, 'MarkviewIcon5', { fg = base46.base_30.base0K })
+    hl(0, 'MarkviewIcon6', { fg = base46.base_30.base0L })
   end
 
   if config.plugins.modeline then
