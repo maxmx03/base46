@@ -493,6 +493,75 @@ function M.load_faces(base46, config)
     end
   end
 
+  if config.plugins.blink then
+    local kinds = {
+      keys = {
+        'Text',
+        'Method',
+        'Function',
+        'Field',
+        'Variable',
+        'Class',
+        'Interface',
+        'Module',
+        'Property',
+        'Unit',
+        'Enum',
+        'Keyword',
+        'Snippet',
+        'Color',
+        'File',
+        'Reference',
+        'Folder',
+        'EnumMember',
+        'Constant',
+        'Struct',
+        'Event',
+        'Operator',
+        'TypeParameter',
+        'Value',
+      },
+      values = {
+        Text = { link = 'String' },
+        Method = { link = 'Function' },
+        Function = { link = 'Function' },
+        Field = { link = 'Property' },
+        Variable = { link = 'Identifier' },
+        Class = { link = 'Type' },
+        Interface = { link = 'Type' },
+        Module = { link = 'Type' },
+        Property = { link = 'Identifier' },
+        Unit = { link = 'Number' },
+        Enum = { link = 'Type' },
+        Keyword = { link = 'Keyword' },
+        Snippet = { link = 'Keyword' },
+        Color = { fg = base46.green },
+        File = { fg = base46.base_30.base05 },
+        Reference = { link = 'Underlined' },
+        Folder = { link = 'Directory' },
+        EnumMember = { link = 'Constant' },
+        Constant = { link = 'Constant' },
+        Struct = { link = 'Type' },
+        Event = { link = 'Function' },
+        Operator = { link = 'Operator' },
+        TypeParameter = { link = 'Type' },
+        Value = { link = 'String' },
+      },
+    }
+
+    ---@param root string
+    ---@param kinds_to_iter table
+    local function iterate(root, kinds_to_iter)
+      ---@param key string
+      vim.iter(kinds_to_iter.keys):each(function(key)
+        local name = root .. key
+        vim.api.nvim_set_hl(0, name, kinds.values[key])
+      end)
+    end
+
+    iterate('BlinkCmpKind', kinds)
+  end
+
   if config.plugins.navic then
     hl(0, 'NavicIconsFile', { fg = base46.base_30.base05 })
     hl(0, 'NavicIconsModule', { fg = base46.base_16.base0A })

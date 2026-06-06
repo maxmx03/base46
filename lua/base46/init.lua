@@ -10,6 +10,7 @@ local groups = require 'base46.groups'
 ---@field gitsigns boolean
 ---@field dired boolean
 ---@field cmp boolean
+---@field blink boolean
 ---@field navic boolean
 ---@field markview boolean
 ---@field modeline boolean
@@ -49,6 +50,7 @@ M.config = {
     gitsigns = true,
     dired = true,
     cmp = true,
+    blink = true,
     navic = true,
     markview = true,
     modeline = true,
