@@ -732,4 +732,8 @@ function M.load_faces(base46, config)
   end
 end
 
+vim.defer_fn(function()
+  vim.g.base46_palette = nil
+end, 1000)
+
 return M

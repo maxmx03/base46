@@ -134,7 +134,7 @@ require('base46').setup({
 | `transparency` | boolean | `false`     | Enable transparent backgrounds           |
 | `themes`       | table   | `{}`        | List of theme names for telescope picker |
 | `groups`       | table   | `{}`        | User highlight groups customization      |
-| `plugins`      | table   | see below   | Plugin integrations toggle              |
+| `plugins`      | table   | see below   | Plugin integrations toggle               |
 
 #### Default Plugins
 

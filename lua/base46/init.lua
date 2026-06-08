@@ -70,6 +70,7 @@ end
 
 ---@param palette base46
 function M.load_theme(palette)
+  vim.g.base46_palette = palette
   groups.load_faces(palette, M.config)
 end
 
