@@ -11,16 +11,16 @@ local lualine = {
     z = { fg = c.base_30.base01, bg = c.blue },
   },
   insert = {
-    a = { fg = shade(c.green, 5), bg = c.green },
+    a = { fg = shade(c.green, 5), bg = c.green, gui = 'bold' },
   },
   visual = {
-    a = { fg = shade(c.magenta, 5), bg = c.magenta },
+    a = { fg = shade(c.magenta, 5), bg = c.magenta, gui = 'bold' },
   },
   replace = {
-    a = { fg = shade(c.red, 5), bg = c.red },
+    a = { fg = shade(c.red, 5), bg = c.red, gui = 'bold' },
   },
   command = {
-    a = { fg = shade(c.orange, 5), bg = c.orange },
+    a = { fg = shade(c.orange, 5), bg = c.orange, gui = 'bold' },
   },
 }
 return lualine
